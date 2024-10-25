@@ -1,0 +1,84 @@
+{
+  "dashboard": {
+    "layout": {
+      "desktop": {
+        "columns": 12,
+        "gap:": 10,
+        "cellHeight": "auto"
+      },
+      "mobile": {
+        "columns": 1,
+        "gap": 20,
+        "cellHeight": 200
+      }
+    },
+    "charts": [
+      {
+        "title": "Chart1",
+        "type": "Linear",
+        "colors": ["#342443", "#45df43", "#ff0000"],
+        "metrics": ["metricName1", "metricName2", "metricName3"],
+        "layout": {
+          "desktop": {
+            "order": 1,
+            "columnStart": 1,
+            "rowStart": 1,
+            "width": 2,
+            "height": 2
+          },
+          "mobile": {
+            "order": 1,
+            "columnStart": 1,
+            "rowStart": 1,
+            "width": 1,
+            "height": 1
+          }
+        }
+      },
+      {
+        "title": "Chart2",
+        "type": "Area",
+        "colors": ["#f42433", "#f8df43", "#000000"],
+        "metrics": ["metricName4", "metricName5", "metricName6"],
+        "layout": {
+          "desktop": {
+            "order": 2,
+            "columnStart": 3,
+            "rowStart": 1,
+            "width": 1,
+            "height": 1
+          },
+          "mobile": {
+            "order": 2,
+            "columnStart": 1,
+            "rowStart": 2,
+            "width": 1,
+            "height": 1
+          }
+        }
+      },
+      {
+        "title": "Chart3",
+        "type": "Bar",
+        "colors": ["#b42433", "#d8df43", "#098d67"],
+        "metrics": ["metricName1", "metricName4", "metricName6"],
+        "layout": {
+          "desktop": {
+            "order": 3,
+            "columnStart": 4,
+            "rowStart": 1,
+            "width": 1,
+            "height": 1
+          },
+          "mobile": {
+            "order": 3,
+            "columnStart": 1,
+            "rowStart": 3,
+            "width": 1,
+            "height": 1
+          }
+        }
+      }
+    ]
+  }
+}
