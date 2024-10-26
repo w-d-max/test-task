@@ -1,4 +1,4 @@
-import { FormEvent, useState, FC, useMemo, useCallback } from "react";
+import { FormEvent, useState, FC, useCallback } from "react";
 import { Grid2, Button } from "@mui/material";
 import { TSchema } from "../../types/schema";
 import { TErrors, TPath, TFormState, TFormStateValue } from "../../types/form";
@@ -45,12 +45,10 @@ const Form: FC<Props> = ({ schema, onChange, onError, onSubmit }) => {
     setErrors(errors);
   };
 
-  const path = useMemo(() => [], []);
-
   return (
     <form onSubmit={handleSubmit}>
       <FormContext.Provider value={formState}>
-        <FormNode schema={schema} path={path} label="" onChange={setValue} />
+        <FormNode schema={schema} onChange={setValue} />
       </FormContext.Provider>
       <Grid2 container spacing={2} sx={{ marginTop: 3 }}>
         <Errors errors={errors} />

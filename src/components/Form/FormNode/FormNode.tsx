@@ -9,12 +9,12 @@ import Select from "../Select/Select";
 
 type Props = {
   schema: TSchema;
-  path: TPath;
-  label: string;
+  path?: TPath;
+  label?: string;
   onChange: (path: TPath, value: TFormStateValue) => void;
 };
 
-const FormNode: FC<Props> = memo(({ schema, onChange, path, label }) => {
+const FormNode: FC<Props> = memo(({ schema, onChange, path = [], label = "" }) => {
   switch (schema.type) {
     case "string":
       return (
