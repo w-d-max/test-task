@@ -1,30 +1,26 @@
-import { FC, SyntheticEvent } from "react";
-import { FormControlLabel, Checkbox as MuiCheckbox } from "@mui/material";
+import { FC, memo, SyntheticEvent } from "react";
 import { TPath, TFormStateValue } from "../../../types/form";
+import withFormValue from "../../../hoc/withFormValue";
+import { FormControlLabel, Checkbox as MuiCheckbox } from "@mui/material";
 
 type Props = {
   path: TPath;
   label: string;
-  checked: boolean;
+  value?: TFormStateValue;
   onChange: (path: TPath, value: TFormStateValue) => void;
 };
 
-const TextField: FC<Props> = ({ path, label, onChange, checked }) => {
+const Checkbox: FC<Props> = memo(({ path, label, onChange, value }) => {
   const handleChange = (_: SyntheticEvent<Element, Event>, checked: boolean) => {
-      onChange(path, checked);
-    };
+    onChange(path, checked);
+  };
 
   return (
     <FormControlLabel
-      control={
-        <MuiCheckbox
-          checked={checked}
-          onChange={handleChange}
-        />
-      }
+      control={<MuiCheckbox checked={!!value} onChange={handleChange} />}
       label={label}
     />
   );
-};
+});
 
-export default TextField;
+export default withFormValue(Checkbox);

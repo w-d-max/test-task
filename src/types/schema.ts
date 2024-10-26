@@ -1,38 +1,37 @@
-
 type TObject = {
-  type: 'object',
+  type: "object";
   properties: {
-    [key: string]: TSchema
-  },
-  required?: string[]
-}
+    [key: string]: TSchema;
+  };
+  required?: string[];
+};
 
-type TArray = {
-  type: 'array',
-  minItems?: number,
-  maxItems?: number,
-  items: TSchema
-}
+export type TArray = {
+  type: "array";
+  minItems?: number;
+  maxItems?: number;
+  items: TSchema;
+};
 
 type TString = {
-  type: 'string',
-  minLength?: number,
-  maxLength?: number
-}
+  type: "string";
+  minLength?: number;
+  maxLength?: number;
+};
 
 type TInteger = {
-  type: 'integer',
-  minimum?: number,
-  maximum?: number
-}
+  type: "integer";
+  minimum?: number;
+  maximum?: number;
+};
 
 type TBoolean = {
-  type: 'boolean',
-}
+  type: "boolean";
+};
 
 type TEnum = {
-  type: undefined,
-  enum: string[]
-}
+  type: undefined;
+  enum: string[];
+};
 
 export type TSchema = TObject | TArray | TString | TInteger | TBoolean | TEnum;

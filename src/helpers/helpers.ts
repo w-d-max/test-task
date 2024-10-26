@@ -6,11 +6,15 @@ export const getValueByPath = (keys: TPath, formState: TFormState): TFormStateVa
     if (acc && acc.hasOwnProperty(key)) {
       return acc[key];
     }
-    return "";
+    return null;
   }, formState);
 };
 
-export const getUpdatedFormState = (prevState: TFormState, path: TPath, value: TFormStateValue): TFormState => {
+export const getUpdatedFormState = (
+  prevState: TFormState,
+  path: TPath,
+  value: TFormStateValue
+): TFormState => {
   const newState = { ...prevState };
 
   let current = newState;
@@ -39,7 +43,7 @@ export const getFormErrors = (schema: TSchema, data: any, path: string = ""): TE
       if (
         schema.minLength !== undefined &&
         schema.maxLength !== undefined &&
-        ((data || '').length < schema.minLength || (data || '').length > schema.maxLength)
+        ((data || "").length < schema.minLength || (data || "").length > schema.maxLength)
       ) {
         errors.push(`${path} length must be between ${schema.minLength} and ${schema.maxLength}`);
       }
@@ -62,17 +66,21 @@ export const getFormErrors = (schema: TSchema, data: any, path: string = ""): TE
           (schema.maxItems !== undefined && data.length > schema.maxItems)
         ) {
           errors.push(
-            `${path} Array length must be between ${schema.minItems || 0} ${schema.maxItems ? 'and ' + schema.maxItems : '' }`
+            `${path} Array length must be between ${schema.minItems || 0} ${
+              schema.maxItems ? "and " + schema.maxItems : ""
+            }`
           );
         }
 
         data.forEach((item, index) => {
-          errors.push(...getFormErrors(schema.items!, item, `${path}/[${index+1}]`));
+          errors.push(...getFormErrors(schema.items!, item, `${path}/[${index + 1}]`));
         });
       } else {
         if (schema.minItems !== 0) {
           errors.push(
-            `${path} Array length must be between ${schema.minItems || 0} ${schema.maxItems ? 'and ' + schema.maxItems : '' }`
+            `${path} Array length must be between ${schema.minItems || 0} ${
+              schema.maxItems ? "and " + schema.maxItems : ""
+            }`
           );
         }
       }
@@ -88,7 +96,9 @@ export const getFormErrors = (schema: TSchema, data: any, path: string = ""): TE
 
       schema.properties &&
         Object.keys(schema.properties).forEach((key) => {
-          errors.push(...getFormErrors(schema.properties![key], data && data[key], `${path}/${key}`));
+          errors.push(
+            ...getFormErrors(schema.properties![key], data && data[key], `${path}/${key}`)
+          );
         });
       break;
   }

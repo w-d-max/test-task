@@ -15,7 +15,9 @@ const Errors: FC<Props> = ({ errors }) => {
     <Alert severity="error" sx={{ width: "100%" }}>
       <List dense sx={{ padding: 0 }}>
         {errors.map((error) => (
-          <ListItem key={error} sx={{ padding: 0 }}>• {error}</ListItem>
+          <ListItem key={error} sx={{ padding: 0 }}>
+            • {error}
+          </ListItem>
         ))}
       </List>
     </Alert>

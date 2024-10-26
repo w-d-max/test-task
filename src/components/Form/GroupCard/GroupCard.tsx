@@ -18,10 +18,7 @@ const GroupCard: FC<Props> = ({ children, title, withBorder = false }) => {
         padding: withBorder ? 1.5 : 0,
       }}
     >
-      <Typography
-        sx={{ marginBottom: 1.5 }}
-        color="textSecondary"
-      >
+      <Typography sx={{ marginBottom: 1.5 }} color="textSecondary">
         {title}
       </Typography>
       <Grid2 container spacing={2}>
